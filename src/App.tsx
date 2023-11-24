@@ -46,7 +46,7 @@ function App() {
         onChange={handleSubjectChange}
         onSubmit={handleSubjectSave} />
       {savedSubjects && <ScoreList subjects={savedSubjects} />}
-      {savedSubjects.length > 0 && <h3>Median: {median(savedSubjects)}</h3>}
+      {savedSubjects.length > 1 && <h3>Median: {median(savedSubjects)}</h3>}
     </>
   )
 }
