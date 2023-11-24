@@ -6,14 +6,16 @@ import ScoreList from './components/ScoreList';
 
 function App() {
   const subjects = [
-    { id: 1, name: "Math", score: 70 },
-    { id: 2, name: "Spanish", score: 80 },
-    { id: 3, name: "Chemistry", score: 90 }
+    { id: 1, name: 'Math', score: 0 },
+    { id: 2, name: 'Spanish', score: 0 },
+    { id: 3, name: 'Chemistry', score: 0 }
   ]
 
   const [selectedSubject, setSelectedSubject] = useState(subjects[0]);
 
   const [savedSubjects, setSavedSubjects] = useState<Subject[]>([]);
+
+  const [subjectScore, setSubjectScore] = useState(0);
 
   function handleSubjectChange(event: any) {
     const { value } = event.target;
@@ -27,7 +29,9 @@ function App() {
     if (savedSubjects.some(subject => subject.id === selectedSubject.id))
       return;
 
-    setSavedSubjects([...savedSubjects, selectedSubject]);
+    const currentSubject = { ...selectedSubject, score: subjectScore }
+
+    setSavedSubjects([...savedSubjects, currentSubject]);
   }
 
   function median(subjects: Subject[]) {
@@ -38,13 +42,19 @@ function App() {
     return sum / subjects.length;
   }
 
+  function handleSubjectScoreChange(event: any) {
+    event.preventDefault();
+    setSubjectScore(event.target.value);
+  }
+
   return (
     <>
       <h1>Median score</h1>
       <SubjectPicker
         subjects={subjects}
         onChange={handleSubjectChange}
-        onSubmit={handleSubjectSave} />
+        onSubmit={handleSubjectSave}
+        onScoreChange={handleSubjectScoreChange} />
       {savedSubjects && <ScoreList subjects={savedSubjects} />}
       {savedSubjects.length > 1 && <h3>Median: {median(savedSubjects)}</h3>}
     </>
