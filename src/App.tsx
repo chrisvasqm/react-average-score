@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css'
 import ScorePicker from './components/ScorePicker';
 import Subject from './models/Subject';
+import ScoreList from './components/ScoreList';
 
 function App() {
   const subjects = [
@@ -22,6 +23,10 @@ function App() {
 
   function handleSubjectSave(event: any) {
     event.preventDefault();
+
+    if (savedSubjects.some(subject => subject.id === selectedSubject.id))
+      return;
+
     setSavedSubjects([...savedSubjects, selectedSubject]);
   }
 
@@ -32,6 +37,7 @@ function App() {
         subjects={subjects}
         onChange={handleSubjectChange}
         onSubmit={handleSubjectSave} />
+      {savedSubjects && <ScoreList subjects={savedSubjects} />}
     </>
   )
 }
