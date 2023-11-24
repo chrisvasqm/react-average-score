@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css'
-import ScorePicker from './components/ScorePicker';
+import SubjectPicker from './components/ScorePicker';
 import Subject from './models/Subject';
 import ScoreList from './components/ScoreList';
 
@@ -41,7 +41,7 @@ function App() {
   return (
     <>
       <h1>Median score</h1>
-      <ScorePicker
+      <SubjectPicker
         subjects={subjects}
         onChange={handleSubjectChange}
         onSubmit={handleSubjectSave} />

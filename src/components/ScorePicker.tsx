@@ -6,7 +6,7 @@ interface Props {
     onSubmit: (event: any) => void;
 }
 
-function ScorePicker({ subjects, onChange, onSubmit }: Props) {
+function SubjectPicker({ subjects, onChange, onSubmit }: Props) {
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -19,4 +19,4 @@ function ScorePicker({ subjects, onChange, onSubmit }: Props) {
     )
 }
 
-export default ScorePicker;
+export default SubjectPicker;
