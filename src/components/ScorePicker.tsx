@@ -3,15 +3,17 @@ import Subject from "../models/Subject";
 interface Props {
     subjects: Subject[];
     onChange: (event: any) => void;
+    onSubmit: (event: any) => void;
 }
 
-function ScorePicker({ subjects, onChange }: Props) {
+function ScorePicker({ subjects, onChange, onSubmit }: Props) {
     return (
         <div>
-            <form>
-                <select defaultValue={subjects[0].name} onChange={onChange}>
+            <form onSubmit={onSubmit}>
+                <select defaultValue={subjects[0]} onChange={onChange}>
                     {subjects && subjects.map(subject => <option key={subject.id}>{subject.name}</option>)}
                 </select>
+                <button type="submit">Save</button>
             </form>
         </div>
     )

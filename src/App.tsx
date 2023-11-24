@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css'
 import ScorePicker from './components/ScorePicker';
+import Subject from './models/Subject';
 
 function App() {
   const subjects = [
@@ -11,17 +12,26 @@ function App() {
 
   const [selectedSubject, setSelectedSubject] = useState(subjects[0]);
 
+  const [savedSubjects, setSavedSubjects] = useState<Subject[]>([]);
 
   function handleSubjectChange(event: any) {
-    setSelectedSubject(event.target.value);
+    const { value } = event.target;
+    const subject = subjects.find(subject => subject.name === value);
+    setSelectedSubject(subject);
+  }
 
-    console.log(selectedSubject.name);
+  function handleSubjectSave(event: any) {
+    event.preventDefault();
+    setSavedSubjects([...savedSubjects, selectedSubject]);
   }
 
   return (
     <>
       <h1>Median score</h1>
-      <ScorePicker subjects={subjects} onChange={handleSubjectChange} />
+      <ScorePicker
+        subjects={subjects}
+        onChange={handleSubjectChange}
+        onSubmit={handleSubjectSave} />
     </>
   )
 }
