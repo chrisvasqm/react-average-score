@@ -15,7 +15,7 @@ function App() {
 
   const [savedSubjects, setSavedSubjects] = useState<Subject[]>([]);
 
-  const [subjectScore, setSubjectScore] = useState(0);
+  const [score, setScore] = useState(0);
 
   function handleSubjectChange(event: any) {
     const { value } = event.target;
@@ -29,7 +29,7 @@ function App() {
     if (savedSubjects.some(subject => subject.id === selectedSubject.id))
       return;
 
-    const currentSubject = { ...selectedSubject, score: subjectScore }
+    const currentSubject = { ...selectedSubject, score: score }
 
     setSavedSubjects([...savedSubjects, currentSubject]);
   }
@@ -44,7 +44,7 @@ function App() {
 
   function handleSubjectScoreChange(event: any) {
     event.preventDefault();
-    setSubjectScore(event.target.value);
+    setScore(event.target.value);
   }
 
   return (
