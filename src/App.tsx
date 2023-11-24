@@ -30,6 +30,14 @@ function App() {
     setSavedSubjects([...savedSubjects, selectedSubject]);
   }
 
+  function median(subjects: Subject[]) {
+    let sum = 0;
+
+    subjects.forEach(subject => sum += subject.score);
+
+    return sum / subjects.length;
+  }
+
   return (
     <>
       <h1>Median score</h1>
@@ -38,6 +46,7 @@ function App() {
         onChange={handleSubjectChange}
         onSubmit={handleSubjectSave} />
       {savedSubjects && <ScoreList subjects={savedSubjects} />}
+      {savedSubjects.length > 0 && <h3>Median: {median(savedSubjects)}</h3>}
     </>
   )
 }
