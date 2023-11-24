@@ -13,7 +13,7 @@ function ScorePicker({ subjects, onChange, onSubmit }: Props) {
                 <select defaultValue={subjects[0]} onChange={onChange}>
                     {subjects && subjects.map(subject => <option key={subject.id}>{subject.name}</option>)}
                 </select>
-                <button type="submit">Save</button>
+                <button className="button-save" type="submit">Save</button>
             </form>
         </div>
     )
