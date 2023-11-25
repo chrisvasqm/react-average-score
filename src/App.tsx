@@ -49,14 +49,14 @@ function App() {
 
   return (
     <>
-      <h1>Median score</h1>
+      <h1>Average score</h1>
       <SubjectPicker
         subjects={subjects}
         onChange={handleSubjectChange}
         onSubmit={handleSubjectSave}
         onScoreChange={handleSubjectScoreChange} />
       {savedSubjects && <ScoreList subjects={savedSubjects} />}
-      {savedSubjects.length > 1 && <h3>Median: {average(savedSubjects)}</h3>}
+      {savedSubjects.length > 1 && <h3>Average: {average(savedSubjects)}</h3>}
     </>
   )
 }

@@ -1,6 +1,6 @@
-# React Median Score
+# React Average Score
 
-Sample project to showcase how to calculate the median score of a student from multiple subjects.
+Sample project to showcase how to calculate the average score of a student from multiple subjects.
 
 ## Getting started
 
