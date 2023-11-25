@@ -34,7 +34,7 @@ function App() {
     setSavedSubjects([...savedSubjects, currentSubject]);
   }
 
-  function median(subjects: Subject[]) {
+  function average(subjects: Subject[]) {
     let sum = 0;
 
     subjects.forEach(subject => sum += subject.score);
@@ -44,7 +44,7 @@ function App() {
 
   function handleSubjectScoreChange(event: any) {
     event.preventDefault();
-    setScore(event.target.value);
+    setScore(parseInt(event.target.value, 10));
   }
 
   return (
@@ -56,7 +56,7 @@ function App() {
         onSubmit={handleSubjectSave}
         onScoreChange={handleSubjectScoreChange} />
       {savedSubjects && <ScoreList subjects={savedSubjects} />}
-      {savedSubjects.length > 1 && <h3>Median: {median(savedSubjects)}</h3>}
+      {savedSubjects.length > 1 && <h3>Median: {average(savedSubjects)}</h3>}
     </>
   )
 }
